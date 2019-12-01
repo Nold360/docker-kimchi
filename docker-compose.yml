@@ -1,0 +1,27 @@
+version: '3'
+services:
+ wokd:
+  build: .
+  ports:
+   - 8001
+   - 8010
+   - 64667
+  restart: unless-stopped
+
+ web:
+  build: ./nginx
+  depends_on:
+   - wokd
+  networks:
+   - default
+   - frontend
+  labels:
+   traefik.frontend.rule: "Host:kimchi.dc"
+   traefik.port: "8001"
+   traefik.protocol: "http"
+   traefik.enable: "true"
+
+networks:
+ frontend:
+  external:
+   name: web

@@ -1,22 +1,11 @@
-mbentley/kimchi
+nold360/docker-kimchi
 ===============
 
-docker image for kimchi
+**This image might not build, i tried running kimchi in a container but it's just a pain in the a..**
+Don't use me! Just uploaded this for documentation/sharing.
 
-To pull this image:
-`docker pull mbentley/kimchi`
-
-Usage:
-```
-docker run -d --restart=always --net=host --name kimchi \
-  -v /etc/passwd:/etc/passwd:ro \
-  -v /etc/group:/etc/group:ro \
-  -v /etc/shadow:/etc/shadow:ro \
-  -v /path/to/ssl/cert:/etc/kimchi/kimchi-cert.pem:ro \
-  -v /path/to/ssl/key:/etc/kimchi/kimchi-key.pem:ro \
-  -v /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock \
-  -v /var/lib/libvirt:/var/lib/libvirt \
-  -v /etc/libvirt:/etc/libvirt \
-  -v /path/to/your/storage:/path/to/your/storage \
-  mbentley/kimchi
-```
+(broken) docker image for kimchi. 
+ - The App depends hardly on systemd, which sucks for containers
+ - The App seems to use the PAM-Stack for authenticaton? ^
+ - The App does not allow listening on 0.0.0.0 without patching the code
+ - When running, it requires to access 3rd-party web services to import javascript code - ewwww
